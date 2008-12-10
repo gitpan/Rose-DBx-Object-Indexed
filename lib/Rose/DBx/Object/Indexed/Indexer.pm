@@ -16,11 +16,13 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'swish_indexer',
     'scalar --get_set_init' => 'indexer_class',
     'scalar --get_set_init' => 'prune',
+    'scalar --get_set_init' => 'force_load',
     'scalar'                => 'xml_root_element',
     'scalar --get_set_init' => 'max_depth',
+    'scalar --get_set_init' => 'debug',
 );
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 =head1 NAME
 
@@ -140,6 +142,23 @@ Used by serialize_object(). The default value is 1.
 
 sub init_max_depth {1}
 
+=head2 init_force_load
+
+Used by serialize_object(). The default value is 1 (which is B<not>
+the default value in as_tree()).
+
+=cut
+
+sub init_force_load {1}
+
+=head2 init_debug
+
+Some messages on stderr if true. Default is false.
+
+=cut
+
+sub init_debug {0}
+
 =head2 serialize_object( I<rdbo_object> )
 
 Returns I<rdbo_object> as a hash ref, using the as_tree() Helper method.
@@ -155,12 +174,20 @@ sub serialize_object {
     }
     my $prune = $self->prune;
     my $hash  = $obj->as_tree(
-        force_load => 1,
+        force_load => $self->force_load,
         max_depth  => $self->max_depth,
         prune      => sub {
             my ( $rel_meta, $object, $depth ) = @_;
+
+            if ( $self->debug ) {
+                warn sprintf(
+                    "eval prune for rel %s for object %s at depth %s\n",
+                    $rel_meta->name, $object, $depth );
+            }
+
             return exists $prune->{ $rel_meta->name };
         },
+
     );
     return $hash;
 }

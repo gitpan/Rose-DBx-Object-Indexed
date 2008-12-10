@@ -13,7 +13,7 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'indexer_class',
 );
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 =head1 NAME
 

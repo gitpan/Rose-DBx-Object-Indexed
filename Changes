@@ -3,3 +3,7 @@ Revision history for Rose-DBx-Object-Indexed
 0.001   31 Oct 2008
         First version, released on an unsuspecting world.
 
+
+0.002   10 Dec 2008
+        * add debug() and force_load() opts
+
