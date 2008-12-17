@@ -7,3 +7,7 @@ Revision history for Rose-DBx-Object-Indexed
 0.002   10 Dec 2008
         * add debug() and force_load() opts
 
+0.003   17 Dec 2008
+        * fix bug where -u option was not passed to swish-e on insert()
+          and existing index was being wiped out.
+

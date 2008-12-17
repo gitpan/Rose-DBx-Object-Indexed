@@ -22,7 +22,7 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'debug',
 );
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 =head1 NAME
 
@@ -264,6 +264,7 @@ Calls run() with the appropriate arguments.
 sub insert {
     my $self = shift;
     my $obj = shift or croak "RDBO object required";
+    $self->swish_indexer->opts('-u');    # TODO header should be enough
     $self->run($obj);    # no action. the default is to 'Index' (add)
 }
 
