@@ -11,3 +11,7 @@ Revision history for Rose-DBx-Object-Indexed
         * fix bug where -u option was not passed to swish-e on insert()
           and existing index was being wiped out.
 
+0.004   26 Jan 2009
+        * SWISH::Prog 0.25 or later required
+        * add tree_opts() method to Indexer
+

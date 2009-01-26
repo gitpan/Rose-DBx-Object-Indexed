@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Rose-DBx-Object-Indexed
-version:             0.003
+version:             0.004
 abstract:            full-text search for RDBO classes
 license:             perl
 author:              
@@ -12,7 +12,7 @@ requires:
     Rose::DB::Object:              0
     Rose::DBx::Object::MoreHelpers: 0
     Scalar::Util:                  0
-    SWISH::Prog:                   0.21
+    SWISH::Prog:                   0.25
     Test::More:                    0
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.3.html

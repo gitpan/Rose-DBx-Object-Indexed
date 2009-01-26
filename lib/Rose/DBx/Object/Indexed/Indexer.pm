@@ -17,12 +17,13 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'indexer_class',
     'scalar --get_set_init' => 'prune',
     'scalar --get_set_init' => 'force_load',
+    'scalar --get_set_init' => 'tree_opts',
     'scalar'                => 'xml_root_element',
     'scalar --get_set_init' => 'max_depth',
     'scalar --get_set_init' => 'debug',
 );
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 =head1 NAME
 
@@ -75,11 +76,11 @@ sub init_config {
 
 =head2 init_indexer_class
 
-The default is SWISH::Prog::Indexer::Native.
+The default is SWISH::Prog::Native::Indexer.
 
 =cut
 
-sub init_indexer_class {'SWISH::Prog::Indexer::Native'}
+sub init_indexer_class {'SWISH::Prog::Native::Indexer'}
 
 =head2 init
 
@@ -108,6 +109,7 @@ sub init_swish_indexer {
     my $indexer = $class->new(
         config   => $self->config,
         invindex => $self->invindex,
+        @_
     );
     return $indexer;
 }
@@ -121,6 +123,15 @@ The default is an empty hash ref (skip nothing).
 =cut
 
 sub init_prune { {} }
+
+=head2 init_tree_opts
+
+Should return array ref of key/value pairs to pass into the as_tree()
+method in Rose::DB::Object::Helpers. Default is an empty array.
+
+=cut
+
+sub init_tree_opts { [] }
 
 =head2 get_primary_key( I<rdbo_obj> )
 
@@ -187,6 +198,7 @@ sub serialize_object {
 
             return exists $prune->{ $rel_meta->name };
         },
+        @{ $self->tree_opts },
 
     );
     return $hash;
