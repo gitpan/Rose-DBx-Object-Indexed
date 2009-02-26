@@ -23,7 +23,7 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'debug',
 );
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 =head1 NAME
 
@@ -213,7 +213,7 @@ by default the RDBO class name, XML-escaped.
 
 sub get_xml_root_element {
     my $el = $_[1]->meta->class;
-    $el = s/\W/_/g;
+    $el =~ s/\W/_/g;
     return $el;
 }
 

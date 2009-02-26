@@ -15,3 +15,6 @@ Revision history for Rose-DBx-Object-Indexed
         * SWISH::Prog 0.25 or later required
         * add tree_opts() method to Indexer
 
+0.005   26 Feb 2009
+        * fix typo with = vs =~
+

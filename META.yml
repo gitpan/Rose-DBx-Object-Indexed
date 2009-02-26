@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Rose-DBx-Object-Indexed
-version:             0.004
+version:             0.005
 abstract:            full-text search for RDBO classes
 license:             perl
 author:              
