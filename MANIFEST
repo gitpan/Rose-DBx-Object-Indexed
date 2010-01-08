@@ -1,10 +1,15 @@
 Changes
 lib/Rose/DBx/Object/Indexed.pm
 lib/Rose/DBx/Object/Indexed/Indexer.pm
+lib/Rose/DBx/Object/Indexed/Indexer/KSx.pm
 Makefile.PL
 MANIFEST
 README
 t/00-load.t
+t/01-swish-native.t
+t/02-swish-ksx.t
+t/lib/MyTestHelpers.pm
 t/pod-coverage.t
 t/pod.t
+t/schema.sql
 META.yml                                 Module meta-data (added by MakeMaker)

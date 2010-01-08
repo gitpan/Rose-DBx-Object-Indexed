@@ -16,8 +16,8 @@ WriteMakefile(
         'Rose::DBx::Object::MoreHelpers' => 0,
         'Class::C3'        => 0,
         'Scalar::Util'     => 0,
-
+        'Rose::DBx::TestDB' => 0.05,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean               => { FILES => 'Rose-DBx-Object-Indexed-*' },
+    clean               => { FILES => 'Rose-DBx-Object-Indexed-* t/test.index/ ' },
 );

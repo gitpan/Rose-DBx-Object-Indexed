@@ -23,7 +23,7 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'debug',
 );
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 =head1 NAME
 
@@ -204,6 +204,11 @@ sub serialize_object {
     return $hash;
 }
 
+=head2 xml_root_element( [I<tagname>] )
+
+Get/set the root tag name to use when serializing to XML. Default
+is to use the return value of get_xml_root_element().
+
 =head2 get_xml_root_element( I<rdbo_obj> )
 
 Returns the name of the element to use as the top-level XML tag,
@@ -262,9 +267,39 @@ sub run {
     my $obj     = shift or croak "RDBO object required";
     my $action  = shift;
     my $indexer = $self->swish_indexer;
-    my $doc     = $self->make_doc($obj);
+
+    # the very first time we run we must seed the index
+    # with a dummy "document" so that we can pass the -u
+    # option in both insert() and update().
+    # the -u option to the native swish-e indexer means
+    # that the index *as a whole* should be updated,
+    # not just a particular "document".
+    if ( !-s $indexer->invindex->path->file('swish.xml') ) {
+        $self->__seed_index();
+    }
+    my $doc = $self->make_doc($obj);
     $doc->action($action) if $action;
     $indexer->process($doc);
+}
+
+sub __seed_index {
+    my $self  = shift;
+    my $dummy = SWISH::Prog::Doc->new(
+        content => "000dummy000",     # assume no one ever searches for this..
+        url     => "000-dummy-000",
+        modtime => time(),
+        parser  => 'TXT*',
+        type => 'application/x-rdbo-indexed',    # TODO ??
+    );
+
+    # must init a new indexer since it will write the swish.xml file
+    # only when it is destroyed.
+    my $indexer = $self->init_swish_indexer();
+    my $opts    = $indexer->opts;
+    $indexer->opts('');
+    $indexer->process($dummy);
+    $indexer->opts($opts);
+
 }
 
 =head2 insert( I<rdbo_obj> )

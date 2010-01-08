@@ -18,3 +18,9 @@ Revision history for Rose-DBx-Object-Indexed
 0.005   26 Feb 2009
         * fix typo with = vs =~
 
+0.006   07 Jan 2009
+        * add KinoSearch support via SWISH::Prog::KSx.
+        * fix bug in Indexer where native index must be
+          seeded with a dummy file.
+
+
