@@ -6,11 +6,11 @@ use base qw( Rose::DBx::Object::Indexed::Indexer );
 use Carp;
 use Class::C3;
 
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 =head1 NAME
 
-Rose::DBx::Object::Indexed::Indexer - Indexer base class
+Rose::DBx::Object::Indexed::Indexer::KSx - KinoSearch indexer
 
 =head1 SYNOPSIS
 

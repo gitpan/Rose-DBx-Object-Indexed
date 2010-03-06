@@ -23,4 +23,7 @@ Revision history for Rose-DBx-Object-Indexed
         * fix bug in Indexer where native index must be
           seeded with a dummy file.
 
+0.007   05 March 2010
+        * fix pod bug in KSx indexer
+        * fix t/01 bug by detecting if swish-e has incremental support.
 

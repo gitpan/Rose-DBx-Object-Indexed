@@ -23,7 +23,7 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'debug',
 );
 
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 =head1 NAME
 

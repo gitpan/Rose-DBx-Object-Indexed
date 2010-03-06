@@ -15,8 +15,12 @@ SKIP: {
             6;
     }
     my $test = SWISH::Prog::Native::Indexer->new;
-    if ( !$test->swish_check ) {
+    my $swish_version = $test->swish_check;
+    if ( !$swish_version ) {
         skip "swish-e not installed", 6;
+    }
+    elsif ( $swish_version =~ m/^2\.[45]/ ) {
+        skip "swish-e with incremental index support required (BDB or 2.4/5 with --build-incremental)", 6;
     }
 
     # create a temp db
