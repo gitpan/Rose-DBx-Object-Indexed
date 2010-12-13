@@ -27,3 +27,6 @@ Revision history for Rose-DBx-Object-Indexed
         * fix pod bug in KSx indexer
         * fix t/01 bug by detecting if swish-e has incremental support.
 
+0.008   12 Dec 2010
+        * add Xapian indexer
+

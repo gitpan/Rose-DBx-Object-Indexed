@@ -1,4 +1,4 @@
-package Rose::DBx::Object::Indexed::Indexer::KSx;
+package Rose::DBx::Object::Indexed::Indexer::Xapian;
 
 use warnings;
 use strict;
@@ -10,7 +10,7 @@ our $VERSION = '0.008';
 
 =head1 NAME
 
-Rose::DBx::Object::Indexed::Indexer::KSx - KinoSearch indexer
+Rose::DBx::Object::Indexed::Indexer::Xapian - Xapian indexer
 
 =head1 SYNOPSIS
 
@@ -28,11 +28,11 @@ Rose::DBx::Object::Indexed::Indexer::KSx - KinoSearch indexer
 
 =head2 init_indexer_class
 
-Returns 'SWISH::Prog::KSx::Indexer'.
+Returns 'SWISH::Prog::Xapian::Indexer'.
 
 =cut
 
-sub init_indexer_class {'SWISH::Prog::KSx::Indexer'}
+sub init_indexer_class {'SWISH::Prog::Xapian::Indexer'}
 
 sub __seed_index {
     my $self = shift;

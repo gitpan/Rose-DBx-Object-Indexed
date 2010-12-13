@@ -11,7 +11,7 @@ WriteMakefile(
     PL_FILES            => {},
     PREREQ_PM => {
         'Test::More' => 0,
-        'SWISH::Prog' => '0.25',
+        'SWISH::Prog' => '0.48',
         'Rose::DB::Object' => 0,
         'Rose::DBx::Object::MoreHelpers' => 0,
         'Class::C3'        => 0,

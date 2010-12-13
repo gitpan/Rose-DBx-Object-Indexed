@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Rose-DBx-Object-Indexed
-version:            0.007
+version:            0.008
 abstract:           full-text search for RDBO classes
 author:
     - Peter Karman <karman@cpan.org>
@@ -16,7 +16,7 @@ requires:
     Rose::DBx::Object::MoreHelpers:  0
     Rose::DBx::TestDB:    0.05
     Scalar::Util:         0
-    SWISH::Prog:          0.25
+    SWISH::Prog:          0.48
     Test::More:           0
 no_index:
     directory:
