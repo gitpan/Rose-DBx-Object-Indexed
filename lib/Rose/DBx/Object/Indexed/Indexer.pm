@@ -23,7 +23,7 @@ use Rose::Object::MakeMethods::Generic (
     'scalar --get_set_init' => 'debug',
 );
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 
 =head1 NAME
 
@@ -222,7 +222,7 @@ sub get_xml_root_element {
     return $el;
 }
 
-=head2 to_xml( I<hash>, I<rdbo_obj> )
+=head2 to_xml( I<hash>, I<rdbo_obj> [, I<strip_plurals>] )
 
 Returns I<hash> as XML, using xml_root_element() as the top-level tag.
 
@@ -233,7 +233,7 @@ sub to_xml {
     my $hash = shift or croak "hash ref required";
     my $obj  = shift or croak "RDBO object required";
     my $root = $self->xml_root_element || $self->get_xml_root_element($obj);
-    return SWISH::Prog::Utils->perl_to_xml( $hash, $root );
+    return SWISH::Prog::Utils->perl_to_xml( $hash, $root, @_ );
 }
 
 =head2 make_doc( I<rdbo_obj> )

@@ -6,7 +6,7 @@ use base qw( Rose::DBx::Object::Indexed::Indexer );
 use Carp;
 use Class::C3;
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 
 =head1 NAME
 
